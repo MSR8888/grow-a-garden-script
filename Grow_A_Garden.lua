@@ -1,19 +1,22 @@
--- سكربت معدل بدون استخدام Pastebin | Made for Majed
+-- سكربت معدل بدون Pastebin | Made for Majed
 
--- مكتبة واجهة بسيطة مدمجة مباشرة
+-- مكتبة واجهة بسيطة (بديلة عن المكتبة الخارجية)
 local Library = {}
 Library.CreateLib = function(title, theme)
+    print("Library Loaded: " .. title .. " Theme: " .. theme)
     local lib = {}
-    function lib:NewTab(tabName)
+    function lib:NewTab(name)
+        print("New Tab: " .. name)
         local tab = {}
         function tab:NewSection(secName)
+            print("Section: " .. secName)
             local section = {}
             function section:NewToggle(name, desc, callback)
-                print("Toggle created:", name, desc)
+                print("Toggle created: " .. name .. " - " .. desc)
                 callback(false)
             end
             function section:NewLabel(text)
-                print("Label:", text)
+                print("Label: " .. text)
             end
             return section
         end
@@ -22,7 +25,7 @@ Library.CreateLib = function(title, theme)
     return lib
 end
 
--- واجهة السكربت
+-- واجهة
 local Window = Library.CreateLib("Grow a Garden", "DarkTheme")
 
 local Tab1 = Window:NewTab("الزراعة")
