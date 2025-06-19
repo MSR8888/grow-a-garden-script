@@ -1,6 +1,28 @@
--- سكربت معدّل | Script made For the expert Majed --
+-- سكربت معدل بدون استخدام Pastebin | Made for Majed
 
-local Library = loadstring(game:HttpGet("https://pastebin.com/raw/edJT9EGX"))()
+-- مكتبة واجهة بسيطة مدمجة مباشرة
+local Library = {}
+Library.CreateLib = function(title, theme)
+    local lib = {}
+    function lib:NewTab(tabName)
+        local tab = {}
+        function tab:NewSection(secName)
+            local section = {}
+            function section:NewToggle(name, desc, callback)
+                print("Toggle created:", name, desc)
+                callback(false)
+            end
+            function section:NewLabel(text)
+                print("Label:", text)
+            end
+            return section
+        end
+        return tab
+    end
+    return lib
+end
+
+-- واجهة السكربت
 local Window = Library.CreateLib("Grow a Garden", "DarkTheme")
 
 local Tab1 = Window:NewTab("الزراعة")
@@ -34,5 +56,3 @@ local Tab2 = Window:NewTab("معلومات")
 local Section2 = Tab2:NewSection("السكربت")
 Section2:NewLabel("تم إنشاء السكربت خصيصاً لـ Majed")
 Section2:NewLabel("حقوق التعديل محفوظة لـ خبير مجد")
-
--- يمكنك تعديل الواجهة أو إضافة خصائص جديدة حسب رغبتك
